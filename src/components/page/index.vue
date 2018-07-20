@@ -1,11 +1,5 @@
 <template>
   <div id="app">
-    <button @click="changeMessage" style="width: 40px;height: 40px;"></button>
-    <transition>
-      <span>{{ message }}</span>
-    </transition>
-
-
     <h1 class="title">dataMan</h1>
     <el-input ref="sousuo"
       placeholder="发现搜索的乐趣"
