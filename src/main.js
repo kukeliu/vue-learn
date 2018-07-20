@@ -5,15 +5,17 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
+import axios from 'axios'
 
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
+Vue.prototype.$ajax = axios
 
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
+var vm = new Vue({
   router,
   components: { App },
   template: '<App/>'
 })
+vm.$mount('#app')

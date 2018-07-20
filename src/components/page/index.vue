@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+    <button @click="changeMessage" style="width: 40px;height: 40px;"></button>
+    <transition>
+      <span>{{ message }}</span>
+    </transition>
+
+
     <h1 class="title">dataMan</h1>
     <el-input ref="sousuo"
       placeholder="发现搜索的乐趣"
@@ -43,6 +49,7 @@
         input21: '',
         type: '',
         isActive:'',
+        message:'2233'
       }
     },
     computed: {
@@ -52,6 +59,9 @@
       // prop.$refs.active.style.color = 'red';
     },
     methods:{
+      changeMessage:function(){
+        this.message = '111'
+      },
       goToResult: function (e) {
         console.log("跳转");
         const value = e.target.value;
@@ -124,4 +134,7 @@
     margin-top: 80px;
   }
 
+  [v-cloak] {
+    display: none;
+  }
 </style>

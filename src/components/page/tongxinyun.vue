@@ -41,19 +41,16 @@
       </el-row>
       <div ref="refreshDiv" style="position: relative">
         <v-scroll :on-refresh="onRefresh" :on-infinite="onInfinite" :dataList="scrollData">
-          <el-row class="item-row" type="flex" align="middle" v-for="(item,index) in listdata">
-            <el-col :span="3" >
-              <div class="head el-icon-arrow-right"></div>
-            </el-col>
-            <el-col :span="7">
-              <div class="head">{{item.author}}</div>
-            </el-col>
-            <el-col :span="7">
-              <div class="head">{{item.bookFor}}</div>
-            </el-col>
-            <el-col :span="7">
-              <div class="head">{{item.bookType}}</div>
-            </el-col>
+          <el-row class="item-row" v-for="(item,index) in listdata">
+              <div class="head">
+                <div style="width:50px;height:50px;border:1px solid;border-radius: 25px;display: inline-block;"><img/></div>
+                <div style="display: inline-block;">
+                  <div v-html="item.name"></div>
+                  <div v-html="item.date"></div>
+                </div>
+              </div>
+              <div class="bottomHr head" v-html="item.content"></div>
+              <div ></div>
           </el-row>
           <el-row class="item-row"  type="flex" align="middle" v-for="(item,index) in downdata">
             <el-col :span="3" >
@@ -146,9 +143,9 @@
         var response = []
         for(let i = 0; i < 60; i++) {
           response.push({
-            author:"学术搜索学术搜索学术搜索",
-            bookFor:"学术搜索学术搜索",
-            bookType:"学术搜索"
+            name:"倪大学",
+            date:"20:23 2018-07-20",
+            content:'问题不是重点啦，回答问题撒'
           })
         }
         this.listdata = response.slice(0, this.num);
@@ -175,9 +172,8 @@
             break;
           } else {
             this.downdata.push({
-              author:"学术搜索学术搜索学术搜索",
-              bookFor:"学术搜索",
-              bookType:"学术搜索"
+              name:"倪大学",
+              date:"20:23 2018-07-20",
             })
             more.style.display = 'none'; //隐藏加载条
           }
@@ -255,15 +251,12 @@
     text-align: left;
   }
 
-  .item-row{
-    border-top: 1px solid #c7c7c7;
-  }
-
-  .item-row:nth-of-type(1){
-    border-top: 0;
+  .bottomHr{
+    border-bottom: 1px solid #c7c7c7;
   }
 
   #book{
     background-color: #f0f0f0;
   }
+
 </style>

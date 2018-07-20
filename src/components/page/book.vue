@@ -141,6 +141,22 @@
       }
     },
     methods:{
+      getData(){
+        this.$ajax({
+          method: 'post',
+          url: '/user',
+          data: {
+            name: 'wise',
+            info: 'wrong'
+          }
+        }).then(function (res) {//成功执行
+          console.log(res)
+        }).catch(function (err) {//不成功执行
+          console.log(err)
+        }).bind(this)
+        //加上.bind(this)是由于当我们直接在then，catch回调函数中访问this，无法访问到Vue实例，.bind可以解决
+      },
+
       getList() {
         var response = []
         for(let i = 0; i < 60; i++) {
